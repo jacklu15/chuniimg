@@ -1,0 +1,194 @@
+body {
+    font-family: 'Noto Sans', 'Noto Sans KR', 'Noto Sans TC', 'Noto Sans JP', sans-serif;
+    background-color: #eee;
+    width: 90%;
+    margin: 20px auto;
+    color: #333;
+    line-height: 1.5;
+}
+
+header {
+    margin: 10px 0;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    width: fit-content;
+    margin: 0 auto 30px;
+}
+
+main {
+    margin: 10px 0;
+}
+
+a {
+    color: #44d;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #119;
+}
+
+a:active {
+    color: #119;
+}
+
+a:visited {
+    color: #4a4;
+}
+
+.guidelink, .guidelink:visited {
+    display: block;
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #396;
+}
+
+.guidelink:hover, .guidelink:active {
+    background-color: rgb(53, 105, 131);
+    color: #fff;
+}
+
+figure {
+    width: min(400px, 100%);
+    margin: 0 auto;
+}
+
+figure img {
+    width: 100%;
+    display: block;
+}
+
+.warn {
+    color: #f00;
+    font-weight: 700;
+}
+
+.notice {
+    background-color: rgb(55, 136, 55); /* default color */
+    padding: 20px;
+    color: #fff;
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.notifier {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.descriptions .descblock,
+.setblock {
+    margin: 10px 0;
+}
+
+.descriptions .descblock p,
+.setblock p,
+.setblock label {
+    width: fit-content;
+    margin: 0 auto 10px;
+}
+
+.setblock label {
+    display: block;
+    cursor: default;
+    user-select: none;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: fit-content;
+    margin: 0 auto 20px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: fit-content;
+    margin: 0 auto 10px;
+}
+
+ul {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+ul li {
+    list-style-type: disc;
+    margin-left: 30px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+    width: min(200px, 100%);
+    padding: 5px;
+    font-size: 1rem;
+    border: 1px solid #666;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+}
+
+input[type="checkbox"] {
+    vertical-align: baseline;
+}
+
+.general-button {
+    margin: 0 auto;
+    display: block;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    padding: 10px;
+    color: #fff;
+    background-color: #396;
+    transition-duration: .2s;
+    margin-bottom: 10px;
+}
+
+.general-button:hover {
+    background-color: rgb(53, 105, 131);
+    transition-duration: .2s;
+}
+
+.gendeepbg {
+    background-color: #ccd;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+footer {
+    margin: 10px 0;
+    padding: 10px 0;
+    border-top: 3px solid #666;
+}
+
+details {
+    border: 1px solid #666;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* 初期化 */
+#generate-image,
+#download,
+#share {
+    display: none;
+}

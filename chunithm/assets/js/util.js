@@ -104,7 +104,7 @@ function removeButtons() {
 function renderImage() {
     loadingState(true);
     removeButtons();
-    html2canvas(document.getElementById("pre-render-area"), { scale: 2 }).then(c => {
+    html2canvas(document.getElementById("pre-render-area"), {scale: 2, useCORS: true }).then(c => {
         document.getElementById("pre-render-area").style.display = "none";
         const img = document.createElement("img");
         img.src = c.toDataURL("image/jpeg");

@@ -1,12 +1,12 @@
 /* 事前描画(HTML) */
 #pre-render-area {
-     background: linear-gradient(0.4turn, rgb(132, 70, 214), rgb(117, 235, 170) 70%); 
+    /* background: linear-gradient(0.4turn, rgb(132, 70, 214), rgb(117, 235, 170) 70%); */
     /* background: linear-gradient(0.4turn, rgb(132, 70, 214), rgb(117, 235, 170)); */
     
-  /*  background-image: url(../images/bg_ichimatsu.png), url(../images/globe.png.webp), url(../images/globe_cross.png.webp), url(../images/bg.jpg.webp);
+    background-image: /*url(../images/bg_ichimatsu.png), url(../images/globe.png.webp), url(../images/globe_cross.png.webp),*/ url(../images/bg.jpg.webp);
     background-size: auto, auto, auto, cover;
     background-position: center, center, center, center;
-    background-repeat: repeat, no-repeat, no-repeat, repeat;*/
+    background-repeat: repeat, no-repeat, no-repeat, repeat;
 }
 
 /* explicit override */

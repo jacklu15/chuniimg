@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head prefix="og:http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="og:title" content="CHUNITHM ベスト枠画像ジェネレーター NEW">
+    <meta property="og:description" content="chunirecのデータからベスト枠の画像を生成します。">
+    <meta property="og:url" content="https://reiwa.f5.si/newbestimg/chunithm">
+    <meta property="og:type" content="website">
+    <title>CHUNITHM ベスト枠画像ジェネレーター NEW</title>
+    <link rel="stylesheet" href="../commonassets/css/destyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;500;700;800&family=Noto+Sans:wght@200;400;500&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../commonassets/css/main.css?v=04">
+    <link rel="stylesheet" href="../commonassets/css/render.css?v=10">
+    <link rel="stylesheet" href="../commonassets/css/loader.css?v=02">
+    <link rel="stylesheet" href="assets/css/render-chunithm.css?v=05">
+    <script src='https://cdn.jsdelivr.net/npm/big.js@6.2.1/big.min.js'></script>
+    <script src="../commonassets/js/html2canvas.js"></script>
+    <script src="../commonassets/js/md5.js"></script>
+    <script src="assets/js/util.js?v=02"></script>
+    <script src="assets/js/main.js?v=10"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X4X1N35JJ3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-X4X1N35JJ3');
+    </script>
+    <style>
+        .af {
+            color: black !important;
+            font-weight: bold;
+            margin-top: 10px;
+            background: linear-gradient(45deg, #f5b0b0, #f5d6aa, #fdf6a8, #92d19d, #97b8e6, #a698d3, #d18ace);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>CHUNITHM ベスト枠画像ジェネレーター NEW</h1>
+    </header>
+    <a href="../ongeki/" class="guidelink">オンゲキ ベスト枠画像ジェネレーター NEWはこちら</a>
+    <!-- <a href="../af2024/chunithm/" class="guidelink af">おや？　ベスト枠画像ジェネレーターの　ようすが……？</a> -->
+    <main>
+        <section class="descriptions">
+            <section class="descblock">
+                <h2>このツールについて</h2>
+                <p>chunirecのデータを元に、レーティング上位30曲を画像化するツールです。</p>
+                <p>
+                    本サイトはGoogle Analyticsを使用しています。詳細については<a href="https://reiwa.f5.si/privacy-policy.html">プライバシーポリシー</a>をご覧ください。
+                </p>
+            </section>
+            <section class="descblock">
+                <div class="notifier" style="color:white;background-color: #6d134a;margin-bottom:10px;">
+                    <h3>ユーザーアンケートまとめ記事公開 (2025/01/04)</h3>
+                    <p>ユーザーアンケートの結果を踏まえた記事を<a href="https://blog.qmainconts.dev/articles/8q6sgywjk4" target="_blank">こちら</a>で公開しています。</p>
+                </div>
+                <div class="notifier" style="color:white;background-color: rgb(158, 9, 138);">
+                    <h3>ロゴのキャッシュに関する問題の解決 (2024/12/21)</h3>
+                    <p>環境によってはCHUNITHM LUMINOUS PLUSのロゴが残っていた問題に対処しました。</p>
+                    <p>極端に特殊な環境でない限りは正常に画像が生成されるかと思いますが、解決しない場合はブラウザのキャッシュの削除をお願いします。</p>
+                </div>
+            </section>
+            <section class="descblock">
+                <h3>使い方</h3>
+                <p>下記『chunirec 情報の登録』にchunirecのユーザーネームを入力します。</p>
+                <p>スマートフォンの場合、ユーザーネームは以下の画像の下線部にあります。</p>
+                <figure>
+                    <img src="https://reiwa.f5.si/general_assets/images/chunirec_username_smartphone.jpg" alt="chunirec 情報の登録">
+                </figure>
+            </section>
+            <!-- <details class="inputfieldwrapper">
+                <summary>chunirecを非公開設定のまま本ツールを利用したい方はこちらをクリック/タップ</summary>
+                <section class="descblock">
+                    <h3>chunirec API アクセストークン登録</h3>
+                    <p>自分のAPI アクセストークンを登録することで、非公開であっても自分のアカウントは取得できるようになります。</p>
+                    <p>chunirec API アクセストークンは<a href="https://developer.chunirec.net" target="_blank">chunirec
+                            開発者向けサイト</a>にログインしたあと、アカウント管理画面から発行できます。</p>
+                    <p></p>
+                    <img src="https://reiwa.f5.si/chunimyconst/chunirec_api_token.png" alt="chunirec API アクセストークンの確認方法" style="display: block; width: 400px; margin: 0 auto;">
+                    <section class="setblock">
+                        <label class="inputdesc" for="chunirec_apiaccesstoken">chunirec API アクセストークン </label><input type="password" id="chunirec_apiaccesstoken" class="finp">
+                    </section>
+                </section>
+            </details> -->
+            <section class="descblock">
+                <h3>お問い合わせ</h3>
+                <p>本ツールに関するお問い合わせは、<a href="https://forms.gle/cAUP6hAQSdAi16Ns9" target="_blank">こちら</a>のGoogleフォームまたは<a href="https://x.com/QmanEnobikto" target="_blank">作者X(旧twitter)アカウント</a>にお願いします。（※XのDMは気づき辛いので可能であればリプライや他の手段を用いていただけると幸いです）</p>
+                <p>本ツールはchunirecと無関係の第三者が制作しています。<b>chunirecに対して本ツールに関する問い合わせを行わないでください。</b></p>
+            </section>
+            <section class="descblock">
+                <h3>注意事項</h3>
+                <ul>
+                    <li>ユーザー名が入力されていない場合、本ツールは動作しません。</li>
+                    <li>chunirec側で非公開アカウントに設定されている場合、エラーが発生します。</li>
+                    <li>chunirecがメンテナンスを行っているなどの事情で、本ツールが使用できないことがあります。</li>
+                    <li>本ツールで取り扱う『達成日』『更新日』は、厳密にはスコアがchunirecに登録された日を指します。<br><b>実際にそのスコアを達成した日とは異なる可能性がある</b>ことに留意してください。
+                    </li>
+                    <li>本ツールは全曲のプレイデータからベスト枠・新曲枠を再計算しているため、CHUNITHM-NET上で確認できるものとは一部異なる場合があります。<br>特に、同じ単曲レートの楽曲は順番や内容が入れ替わる場合があります。</li>
+                    <li>chunirec上で表示されていない楽曲に関しては、計算結果が正しいことを保証できません。</li>
+                </ul>
+            </section>
+            <section class="descblock">
+                <h3>不具合</h3>
+                <ul>
+                    <li>『プレビューを表示する』にチェックが入っていなくても一時的にプレビューと同じ描画領域が表示されます。<br>
+                        一時的に表示が崩れることがありますが、使用する上での問題はありません。</li>
+                </ul>
+            </section>
+        </section>
+        <section class="settings">
+            <h2>設定</h2>
+            <section class="setblock">
+                <h3>chunirec 情報の登録</h3>
+                <p>chunirec ユーザーネーム</p>
+                <input type="text" id="chunirec_username">
+            </section>
+            <!-- <section class="setblock">
+                <h3>一部楽曲のスコア登録</h3>
+                <p>スコアデータに不足がある場合、ここで修正してください。</p>
+                <p>必要がない場合は空欄のままにしてください。</p>
+                <div class="gendeepbg">
+                    <p style="font-size: 0.95rem; margin-bottom: 5px; color: #000;">Theatore Creatore (ULTIMA 15)</p>
+                    <input type="number" id="fix_theatorecreatore" min="1" max="1010000">
+                    <p>
+                        <label for="fix_theatorecreatore_fc" style="display: inline-block; margin: 4px 3px 0;"><input type="checkbox" id="fix_theatorecreatore_fc"> FC</label>
+                        <label for="fix_theatorecreatore_aj" style="display: inline-block; margin: 4px 3px 0;"><input type="checkbox" id="fix_theatorecreatore_aj"> AJ</label>
+                    </p>
+                </div>
+            </section> -->
+            <section class="setblock">
+                <h3>その他の設定</h3>
+                <label for="chunibestimgnew_showprev"><input type="checkbox" id="chunibestimgnew_showprev"> プレビューを表示する (表示が崩れる場合があります)</label>
+                <label for="chunibestimgnew_shownew"><input type="checkbox" id="chunibestimgnew_shownew"> 最も更新日が最近の楽曲に「NEW!!」エンブレムを表示する</label>
+                <label for="chunibestimgnew_copyrightmode"><input type="checkbox" id="chunibestimgnew_copyrightmode" disabled> <span style="color: #999;">【調整中】著作権モード (ジャケットを代替画像で置き換える)</span></label>
+            </section>
+        </section>
+        <button class="general-button" id="generate" onclick="generate()">生成する</button>
+        <div class="loader" id="imggen_loader"></div>
+        <div id="pre-render-area" style="display: none;">
+            <!-- <div id="pre-render-area" style="display: block;"> -->
+            <section id="img-header">
+                <img src="assets/images/logo.webp?t=20241221" width="130" id="img-logoimg">
+                <div id="img-header-text">
+                    <div id="img-title">ベスト枠対象上位30曲</div>
+                    <div id="img-by">By ベスト枠画像ジェネレーター NEW</div>
+                </div>
+                <div id="img-datetime">
+                    <div>UPDATE: <span id="v-update-dt"></span></div>
+                    <div>GENERATE: <span id="v-generate-dt"></span></div>
+                </div>
+            </section>
+            <section id="img-player-data">
+                <div id="img-player-name">
+                    <div id="img-player-name-txt" class="img-plinfo-txt">
+                        Player's Name
+                    </div>
+                    <div id="img-player-name-block" class="img-plinfo-plate">
+                        <span id="v-player-name">Placeholder</span>
+                    </div>
+                </div>
+                <div id="img-player-rating">
+                    <div id="img-player-rating-txt" class="img-plinfo-txt">
+                        Rating
+                    </div>
+                    <div id="img-player-rating-block" class="img-plinfo-plate img-rating">
+                        <span id="v-current-rating">16.00</span> <span class="rating-sub">BEST <span id="v-best-rating">16.1523</span>
+                            / NEW <span id="v-new-rating">16.1542</span></span>
+                    </div>
+                </div>
+            </section>
+            <section id="img-best">
+                <div id="img-best-title-txt" class="img-block-title">Best 30 Songs</div>
+                <div id="img-best-songs">
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#1</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.52</div>
+                            </div>
+                            <div class="img-song-block-img">
+                                <img src="https://reiwa.f5.si/musicjackets/chunithm/3d09431d0ea518fb7fc7f2b52017bcbb.webp">
+                                <div class="img-new-emblem">NEW!!</div>
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,757 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">業 -善なる神とこの世の悪について-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#2</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.43</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/adbe8d99302a7196eecf756ed77e02c6.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,007,845 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">Daphnis</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#1</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.52</div>
+                            </div>
+                            <div class="img-song-block-img">
+                                <img src="https://reiwa.f5.si/musicjackets/chunithm/3d09431d0ea518fb7fc7f2b52017bcbb.webp">
+                                <div class="img-new-emblem">NEW!!</div>
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,757 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">業 -善なる神とこの世の悪について-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#2</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.43</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/adbe8d99302a7196eecf756ed77e02c6.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,007,845 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">Daphnis</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#1</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.52</div>
+                            </div>
+                            <div class="img-song-block-img">
+                                <img src="https://reiwa.f5.si/musicjackets/chunithm/3d09431d0ea518fb7fc7f2b52017bcbb.webp">
+                                <div class="img-new-emblem">NEW!!</div>
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,757 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">業 -善なる神とこの世の悪について-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#2</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.43</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/adbe8d99302a7196eecf756ed77e02c6.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,007,845 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">Daphnis</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="img-new">
+                <div id="img-new-title-txt" class="img-block-title">New 20 Songs</div>
+                <div id="img-new-songs">
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#1</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.52</div>
+                            </div>
+                            <div class="img-song-block-img">
+                                <img src="https://reiwa.f5.si/musicjackets/chunithm/3d09431d0ea518fb7fc7f2b52017bcbb.webp">
+                                <div class="img-new-emblem">NEW!!</div>
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,757 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">業 -善なる神とこの世の悪について-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#2</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.43</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/adbe8d99302a7196eecf756ed77e02c6.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,007,845 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">Daphnis</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#1</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.52</div>
+                            </div>
+                            <div class="img-song-block-img">
+                                <img src="https://reiwa.f5.si/musicjackets/chunithm/3d09431d0ea518fb7fc7f2b52017bcbb.webp">
+                                <div class="img-new-emblem">NEW!!</div>
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,757 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">業 -善なる神とこの世の悪について-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#2</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.4</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.43</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/adbe8d99302a7196eecf756ed77e02c6.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,007,845 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">Daphnis</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                    <div class="img-song-block">
+                        <div class="img-song-block-upper">
+                            <div class="img-song-block-data">
+                                <div class="img-song-rank">#3</div>
+                                <div class="img-song-txt">CONST</div>
+                                <div class="img-song-const">15.3</div>
+                                <div class="img-song-arrow">▼</div>
+                                <div class="img-song-txt">RATING</div>
+                                <div class="img-song-const">17.40</div>
+                            </div>
+                            <div class="img-song-block-img"><img src="https://reiwa.f5.si/musicjackets/chunithm/3a3249c1537f25671e962503f1029403.webp">
+                                <div class="img-diff-emblem mas"></div>
+                                <div class="img-score-rank-highcontrast">1,008,596 <span style="color: rgb(255, 223, 117);">SSS</span></div>
+                            </div>
+                        </div>
+                        <div class="img-song-block-lower">
+                            <div class="img-song-block-lower-title">DA'AT -The First Seeker of Souls-</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="img-footer">
+                <div id="img-footer-text">
+                    <div>Generated by <b>ベスト枠画像ジェネレーター NEW</b> (https://reiwa.f5.si/newbestimg/chunithm)</div>
+                    <div>※本画像におけるロゴ・背景・楽曲ジャケット画像の著作権は、全て著作権所持者に帰属します。</div>
+                    <div>※本画像は非公式のものであり、株式会社SEGA様及びその関連会社とは一切関係ありません。</div>
+                </div>
+            </section>
+        </div>
+        <div id="result-img-wrapper"></div>
+        <div id="imgcanvasbase"></div>
+        <button class="general-button" id="generate-image" onclick="renderImage()">画像化する</button>
+        <button class="general-button" id="download" onclick="download()">画像をダウンロードする</button>
+        <button class="general-button" id="share" onclick="share()">画像をシェアする</button>
+    </main>
+    <footer>
+        <p>© 2023 Kjuman Enobikto</p>
+        <p>サイト上のロゴ・背景・楽曲ジャケット画像の著作権は、全て著作権所持者に帰属します。</p>
+        <p>本サイトは非公式のものであり、株式会社SEGA様及びその関連会社とは一切関係ありません。</p>
+    </footer>
+</body>
+
+</html>

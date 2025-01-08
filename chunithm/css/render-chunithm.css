@@ -1,0 +1,91 @@
+/* 事前描画(HTML) */
+#pre-render-area {
+    /* background: linear-gradient(0.4turn, rgb(132, 70, 214), rgb(117, 235, 170) 70%); */
+    /* background: linear-gradient(0.4turn, rgb(132, 70, 214), rgb(117, 235, 170)); */
+    
+    background-image: url(../images/bg_ichimatsu.png), url(../images/globe.png.webp), url(../images/globe_cross.png.webp), url(../images/bg.jpg.webp);
+    background-size: auto, auto, auto, cover;
+    background-position: center, center, center, center;
+    background-repeat: repeat, no-repeat, no-repeat, repeat;
+}
+
+/* explicit override */
+
+#pre-render-area section:not(:first-child) {
+    margin-top: 10px;
+}
+
+.img-song-block {
+    padding: 5px 10px;
+    max-width: 170px;
+}
+
+#img-best-songs,
+#img-new-songs {
+    padding: 5px 0;
+}
+
+.img-rating .rating-sub {
+    font-size: 23px;
+}
+
+/* -- explicit override */
+
+#img-header,
+.img-plinfo-txt,
+#img-rating-additional,
+#img-best-title-txt,
+#img-new-title-txt {
+    color: #000;
+    /* text-shadow: 1px 1px 2px #474747; */
+}
+
+/* .img-plinfo-txt,
+.img-block-title {
+    width: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+    background: linear-gradient(rgba(0, 0, 0, 0) 60%, rgb(0, 0, 0) 40%);
+} */
+
+.img-plinfo-plate {
+    position: relative;
+    color: black;
+    margin: 10px 10px 0;
+    width: 410px;
+    padding: 10px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    z-index: 1;
+    height: 68px;
+}
+
+.img-plinfo-plate::before {
+    content: "";
+    position: absolute;
+    background-color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    transform: skewX(-20deg);
+}
+
+#img-player-ratng-block {
+    position: relative;
+}
+
+#img-rating-additional {
+    position: absolute;
+    top: 75px;
+    left: -10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+.ult {
+    background-color: #590d15;
+}
